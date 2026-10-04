@@ -1,20 +1,31 @@
-#include <stdbool.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-void exibir_menu_inicial() {
+#include <usuarios.c>
+void menu_principal() {
   int opcao;
   do {
-    printf("---  OddSeeker ---\n");
-    printf("1. Entrar \n");
-    printf("2. Criar conta\n");
+    printf("-- OddSeeker\n");
+    printf("1. Login\n");
+    printf("2. Criar Conta\n");
     printf("0. Sair\n");
-    printf("Digite aqui: ");
-    scanf("%i", &opcao);
-  } while (opcao != 3);
+    scanf("%d", &opcao);
+    switch (opcao) {
+      case 1:
+        painel_login_conta();
+        break;
+      case 2:
+        painel_criar_conta();
+        break;
+      default:
+      case 0:
+        printf("Saindo...\n");
+        break;
+        printf("Opcao Invalida! Digite novamente\n");
+        break;
+    }
+  } while (opcao != 0);
 }
+
 int main() {
-  exibir_menu_inicial();
+  menu_principal();
   return 0;
 }
